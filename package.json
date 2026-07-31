@@ -1,0 +1,21 @@
+{
+  "name": "g92-careers-site",
+  "version": "1.0.0",
+  "description": "G92 Logistics LLC careers site: applications, AI-assisted pre-interview screening, public reviews, internal first-day feedback.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "dotenv": "^16.4.5",
+    "@anthropic-ai/sdk": "^0.32.1",
+    "nanoid": "^3.3.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
