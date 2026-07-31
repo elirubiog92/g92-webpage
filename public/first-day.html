@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First Day Feedback | G92 Logistics (Internal)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand">G92 <span>LOGISTICS</span></a>
+    <div class="nav-links"><span class="mono" style="font-size:0.75rem; color:var(--muted);">INTERNAL FORM</span></div>
+  </div>
+</nav>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">Internal · not public</div>
+    <h1 style="font-size:clamp(1.9rem,4vw,2.6rem);">How was the first day?</h1>
+    <p style="max-width:56ch;">This goes straight to G92 leadership. It's never posted publicly. Be honest, it's how we make training better.</p>
+
+    <div class="form-panel" style="margin-top:28px;">
+      <div id="notice" class="notice"></div>
+      <form id="fd-form">
+        <div class="field-row">
+          <div><label for="submittedBy">Your name</label><input id="submittedBy" placeholder="Optional"></div>
+          <div>
+            <label for="role">You are a</label>
+            <select id="role"><option>New Driver</option><option>Trainer</option></select>
+          </div>
+        </div>
+        <label for="trainerName">Trainer's name (if you're a new driver)</label>
+        <input id="trainerName" placeholder="Optional">
+
+        <label for="rating">Overall, how did the day go?</label>
+        <select id="rating">
+          <option value="5">★★★★★ Great day</option>
+          <option value="4">★★★★☆ Good</option>
+          <option value="3">★★★☆☆ Okay</option>
+          <option value="2">★★☆☆☆ Rough</option>
+          <option value="1">★☆☆☆☆ Bad day</option>
+        </select>
+
+        <label for="whatWentWell">What went well?</label>
+        <textarea id="whatWentWell" placeholder="Training, support, the route, anything"></textarea>
+
+        <label for="whatNeedsWork">What could be better?</label>
+        <textarea id="whatNeedsWork" placeholder="Be specific if you can, it helps us actually fix it"></textarea>
+
+        <label style="display:flex; align-items:center; gap:10px; text-transform:none; font-family:'Inter'; font-size:0.9rem; color:var(--paper);">
+          <input type="checkbox" id="wouldRecommend" style="width:auto; margin:0;">
+          I'd recommend G92 to a friend looking for delivery work
+        </label>
+
+        <div style="text-align:right; margin-top:8px;">
+          <button type="submit" class="btn btn-primary" id="submit-btn">Send Feedback</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><p>&copy; <span id="year"></span> G92 Logistics LLC. Internal use only.</p></div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const form = document.getElementById('fd-form');
+  const notice = document.getElementById('notice');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const payload = {
+      submittedBy: document.getElementById('submittedBy').value.trim(),
+      role: document.getElementById('role').value,
+      trainerName: document.getElementById('trainerName').value.trim(),
+      rating: document.getElementById('rating').value,
+      whatWentWell: document.getElementById('whatWentWell').value.trim(),
+      whatNeedsWork: document.getElementById('whatNeedsWork').value.trim(),
+      wouldRecommend: document.getElementById('wouldRecommend').checked
+    };
+    if (!payload.whatWentWell && !payload.whatNeedsWork) {
+      showNotice(notice, 'Please share at least one piece of feedback.', 'err');
+      return;
+    }
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const res = await fetch('/api/first-day', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Something went wrong.');
+      document.querySelector('.form-panel').innerHTML = `
+        <h3 style="color:var(--good);">Thanks, feedback sent</h3>
+        <p>This goes straight to leadership. It's not posted anywhere public.</p>`;
+    } catch (err) {
+      showNotice(notice, err.message, 'err');
+      btn.disabled = false; btn.textContent = 'Send Feedback';
+    }
+  });
+</script>
+</body>
+</html>

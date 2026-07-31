@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | G92 Logistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand">G92 <span>LOGISTICS</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="culture.html">Culture</a>
+      <a href="index.html#about">About</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="apply.html" class="nav-cta">Start Your Journey</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h1 style="font-size:clamp(2rem,4vw,2.8rem);">Get in touch.</h1>
+    <p style="max-width:56ch;">Questions about applying, your route, or anything else? Reach out and we'll get back to you.</p>
+
+    <div class="hero-grid" style="margin-top:36px; align-items:start;">
+      <div class="form-panel" style="max-width:none; margin:0;">
+        <div id="notice" class="notice"></div>
+        <form id="contact-form">
+          <div class="field-row">
+            <div><label for="name">Name</label><input id="name" required></div>
+            <div><label for="phone">Phone</label><input id="phone" type="tel" required></div>
+          </div>
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+          <label for="message">Message</label>
+          <textarea id="message" required placeholder="What can we help with?"></textarea>
+          <div style="text-align:right;">
+            <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card" style="box-shadow:var(--shadow);">
+        <h3>Hours of operation</h3>
+        <p style="color:var(--ink); font-weight:600; margin-bottom:20px;">9:20 AM – 7:20 PM</p>
+
+        <h3>Location</h3>
+        <p style="color:var(--ink); margin-bottom:4px;">Amazon Warehouse DWA7</p>
+        <p style="margin-bottom:20px;">5509 Military Rd E<br>Puyallup, WA 98375</p>
+
+        <h3>Phone</h3>
+        <p><a href="tel:2535009820">253-500-9820</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; <span id="year"></span> G92 Logistics LLC.</p>
+    <div class="footer-links"><a href="index.html">About</a><a href="reviews.html">Reviews</a><a href="apply.html">Apply</a></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/contact.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

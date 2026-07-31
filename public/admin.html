@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Dashboard | G92 Logistics</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand">G92 <span>LOGISTICS</span></a>
+    <div class="nav-links">
+      <span class="mono" style="font-size:0.75rem; color:var(--muted);">STAFF DASHBOARD</span>
+      <a href="#" id="logout-link" style="display:none;">Log out</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Login gate -->
+<div id="login-view" class="wrap admin-login">
+  <h2>Staff Login</h2>
+  <div id="login-notice" class="notice"></div>
+  <form id="login-form" class="form-panel" style="padding:26px;">
+    <label for="password">Password</label>
+    <input id="password" type="password" required>
+    <button type="submit" class="btn btn-primary" style="width:100%;">Log In</button>
+  </form>
+</div>
+
+<!-- Dashboard -->
+<div id="dashboard-view" class="wrap section-tight" style="display:none;">
+  <h1 style="font-size:1.9rem;">Staff Dashboard</h1>
+  <div class="tabs">
+    <button class="tab-btn active" data-panel="applications">Applications</button>
+    <button class="tab-btn" data-panel="reviews">Public Reviews</button>
+    <button class="tab-btn" data-panel="firstday">First-Day Feedback</button>
+    <button class="tab-btn" data-panel="messages">Contact Messages</button>
+  </div>
+
+  <div id="panel-applications" class="admin-panel active">
+    <p style="color:var(--muted); font-size:0.88rem;">AI scoring is a triage aid, not a decision. Every application still needs a human read.</p>
+    <div id="applications-list"><p class="mono" style="color:var(--muted);">Loading…</p></div>
+  </div>
+
+  <div id="panel-reviews" class="admin-panel">
+    <p style="color:var(--muted); font-size:0.88rem;">Approve reviews to show them on the public reviews page.</p>
+    <div id="reviews-list"><p class="mono" style="color:var(--muted);">Loading…</p></div>
+  </div>
+
+  <div id="panel-firstday" class="admin-panel">
+    <p style="color:var(--muted); font-size:0.88rem;">Internal only. This feedback is never shown publicly.</p>
+    <div id="firstday-list"><p class="mono" style="color:var(--muted);">Loading…</p></div>
+  </div>
+
+  <div id="panel-messages" class="admin-panel">
+    <p style="color:var(--muted); font-size:0.88rem;">Messages submitted through the Contact page.</p>
+    <div id="messages-list"><p class="mono" style="color:var(--muted);">Loading…</p></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

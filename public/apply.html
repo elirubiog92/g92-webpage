@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply | G92 Logistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="nav-brand">G92 <span>LOGISTICS</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="culture.html">Culture</a>
+      <a href="index.html#about">About</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="nav-cta">Start Your Journey</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">Application</div>
+    <h1 style="font-size:clamp(2rem,4vw,2.8rem);">Let's get you on a route.</h1>
+    <p style="max-width:56ch;">Takes about ten minutes. We're not looking for perfect answers. We're looking for people who are reliable, safe, coachable, and take pride in doing the job right.</p>
+
+    <div class="form-panel" style="margin-top:32px;">
+      <div class="progress-steps">
+        <span class="active" data-step="1"></span><span data-step="2"></span><span data-step="3"></span><span data-step="4"></span><span data-step="5"></span>
+      </div>
+      <div id="notice" class="notice"></div>
+
+      <form id="apply-form">
+
+        <!-- Step 1: About you -->
+        <div class="form-step active" data-step="1">
+          <h3>About you</h3>
+          <div class="field-row">
+            <div><label for="firstName">First name</label><input id="firstName" required></div>
+            <div><label for="lastName">Last name</label><input id="lastName" required></div>
+          </div>
+          <label for="middleName">Middle name (optional)</label>
+          <input id="middleName">
+
+          <div class="field-row">
+            <div><label for="email">Email</label><input id="email" type="email" required></div>
+            <div><label for="phone">Phone</label><input id="phone" type="tel" required></div>
+          </div>
+
+          <label>Employment desired</label>
+          <div class="choice-group choice-group-inline">
+            <label class="choice-option"><input type="radio" name="employmentDesired" value="Full-time" required> Full-time</label>
+            <label class="choice-option"><input type="radio" name="employmentDesired" value="Part-time"> Part-time</label>
+            <label class="choice-option"><input type="radio" name="employmentDesired" value="Seasonal"> Seasonal</label>
+          </div>
+
+          <div style="text-align:right;"><button type="button" class="btn btn-primary" data-next>Continue</button></div>
+        </div>
+
+        <!-- Step 2: Eligibility -->
+        <div class="form-step" data-step="2">
+          <h3>Employment eligibility</h3>
+
+          <label>Do you have a valid driver's license?</label>
+          <div class="choice-group choice-group-inline">
+            <label class="choice-option"><input type="radio" name="validLicense" value="Yes" required> Yes</label>
+            <label class="choice-option"><input type="radio" name="validLicense" value="No"> No</label>
+          </div>
+
+          <label>Are you legally eligible to work in the U.S.?</label>
+          <div class="choice-group choice-group-inline">
+            <label class="choice-option"><input type="radio" name="eligibleUS" value="Yes" required> Yes</label>
+            <label class="choice-option"><input type="radio" name="eligibleUS" value="No"> No</label>
+          </div>
+
+          <label>Are you at least 21 years of age?</label>
+          <div class="choice-group choice-group-inline">
+            <label class="choice-option"><input type="radio" name="age21" value="Yes" required> Yes</label>
+            <label class="choice-option"><input type="radio" name="age21" value="No"> No</label>
+          </div>
+
+          <label>Can you lift, push, or pull up to 50 lbs, repeatedly, throughout a shift?</label>
+          <div class="choice-group choice-group-inline">
+            <label class="choice-option"><input type="radio" name="canLift50" value="Yes" required> Yes</label>
+            <label class="choice-option"><input type="radio" name="canLift50" value="No"> No</label>
+          </div>
+
+          <label>Have you ever worked for a DSP (Amazon Delivery Service Partner), including currently?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="dspHistory" value="Yes, I currently work for one" required> Yes, I currently work for one</label>
+            <label class="choice-option"><input type="radio" name="dspHistory" value="Yes, in the past"> Yes, in the past</label>
+            <label class="choice-option"><input type="radio" name="dspHistory" value="No, never"> No, never</label>
+          </div>
+          <div id="dspHistoryWrap" style="display:none;">
+            <label for="dspName">Name of the DSP</label>
+            <input id="dspName">
+            <label for="dspPhone">DSP phone number</label>
+            <input id="dspPhone" type="tel">
+            <label for="dspReason">Reason for departure (if applicable)</label>
+            <textarea id="dspReason"></textarea>
+          </div>
+
+          <label>Do you have any delivery experience?</label>
+          <div class="choice-group choice-group-inline">
+            <label class="choice-option"><input type="radio" name="deliveryExperience" value="Yes" required> Yes</label>
+            <label class="choice-option"><input type="radio" name="deliveryExperience" value="No"> No</label>
+          </div>
+          <div id="deliveryExperienceExplainWrap" style="display:none;">
+            <label for="deliveryExperienceExplain">If yes, please explain</label>
+            <textarea id="deliveryExperienceExplain"></textarea>
+          </div>
+
+          <label>Have you been convicted of a felony in the last 7 years?</label>
+          <div class="choice-group choice-group-inline">
+            <label class="choice-option"><input type="radio" name="felony7yr" value="Yes" required> Yes</label>
+            <label class="choice-option"><input type="radio" name="felony7yr" value="No"> No</label>
+          </div>
+          <div id="felonyExplainWrap" style="display:none;">
+            <label for="felonyExplain">If yes, please explain</label>
+            <textarea id="felonyExplain"></textarea>
+          </div>
+
+          <label>In the last 3 years, has any of the following happened? Please answer honestly. Your driving record will be verified as part of Amazon's background check.</label>
+          <div class="choice-group" id="driving-record">
+            <label class="choice-option"><input type="checkbox" name="drivingRecord" value="At-fault accident"> At-fault accident</label>
+            <label class="choice-option"><input type="checkbox" name="drivingRecord" value="Traffic ticket (e.g. speeding)"> Traffic ticket (e.g. speeding)</label>
+            <label class="choice-option"><input type="checkbox" name="drivingRecord" value="License suspended or revoked"> License suspended or revoked</label>
+            <label class="choice-option"><input type="checkbox" name="drivingRecord" value="None of the above" id="drivingRecordNone"> None of the above</label>
+          </div>
+          <div id="drivingRecordExplainWrap" style="display:none;">
+            <label for="drivingRecordExplain">Please briefly explain</label>
+            <textarea id="drivingRecordExplain"></textarea>
+          </div>
+
+          <label>Do you consent to a background check, including criminal history (last 7 years) and driving record (last 3 years), as required by Amazon?</label>
+          <div class="choice-group choice-group-inline">
+            <label class="choice-option"><input type="radio" name="bgCheckConsent" value="Yes" required> Yes</label>
+            <label class="choice-option"><input type="radio" name="bgCheckConsent" value="No"> No</label>
+          </div>
+
+          <div style="display:flex; justify-content:space-between;">
+            <button type="button" class="btn btn-ghost" data-back>Back</button>
+            <button type="button" class="btn btn-primary" data-next>Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Availability -->
+        <div class="form-step" data-step="3">
+          <h3>Availability</h3>
+          <p style="margin-bottom:20px;">G92 Logistics operates 7 days a week. You'll be assigned a regular schedule based on your availability below, and reliable, safe drivers get priority scheduling and first pick of extra hours as they come up.</p>
+
+          <label>Which days are you available to work? (select all that apply)</label>
+          <div class="choice-group choice-group-inline" id="days-available">
+            <label class="choice-option"><input type="checkbox" name="daysAvailable" value="Sunday"> Sunday</label>
+            <label class="choice-option"><input type="checkbox" name="daysAvailable" value="Monday"> Monday</label>
+            <label class="choice-option"><input type="checkbox" name="daysAvailable" value="Tuesday"> Tuesday</label>
+            <label class="choice-option"><input type="checkbox" name="daysAvailable" value="Wednesday"> Wednesday</label>
+            <label class="choice-option"><input type="checkbox" name="daysAvailable" value="Thursday"> Thursday</label>
+            <label class="choice-option"><input type="checkbox" name="daysAvailable" value="Friday"> Friday</label>
+            <label class="choice-option"><input type="checkbox" name="daysAvailable" value="Saturday"> Saturday</label>
+          </div>
+
+          <label>How many days per week are you looking to work?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="daysPerWeek" value="2 days" required> 2 days</label>
+            <label class="choice-option"><input type="radio" name="daysPerWeek" value="3 days"> 3 days</label>
+            <label class="choice-option"><input type="radio" name="daysPerWeek" value="4 days"> 4 days</label>
+            <label class="choice-option"><input type="radio" name="daysPerWeek" value="5 days"> 5 days</label>
+            <label class="choice-option"><input type="radio" name="daysPerWeek" value="Flexible / based on business needs"> Flexible / based on business needs</label>
+          </div>
+
+          <label for="daysNotAvailable">Are there any days you are NOT available? (optional)</label>
+          <textarea id="daysNotAvailable" placeholder="e.g. Sundays, church commitment"></textarea>
+
+          <label>Routes can run up to 10 hours depending on package volume, weather, traffic, and route conditions. Can you commit to the full scheduled shift?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="fullShiftCommit" value="Yes" required> Yes</label>
+            <label class="choice-option"><input type="radio" name="fullShiftCommit" value="No"> No</label>
+            <label class="choice-option"><input type="radio" name="fullShiftCommit" value="I have questions about the schedule"> I have questions about the schedule</label>
+          </div>
+
+          <div style="display:flex; justify-content:space-between;">
+            <button type="button" class="btn btn-ghost" data-back>Back</button>
+            <button type="button" class="btn btn-primary" data-next>Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Driver Assessment -->
+        <div class="form-step" data-step="4">
+          <h3>Driver Assessment</h3>
+          <p style="margin-bottom:22px;">There are no trick questions here. This helps us understand your work style, decision-making, and how you handle real situations.</p>
+
+          <p class="eyebrow" style="margin-top:0;">Reliability</p>
+          <label>You're scheduled to work tomorrow, but a friend invites you out tonight and you know it may affect your ability to work. What do you do?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="q1" value="I go anyway and figure it out tomorrow" required> I go anyway and figure it out tomorrow</label>
+            <label class="choice-option"><input type="radio" name="q1" value="I plan around my responsibilities because my team depends on me showing up"> I plan around my responsibilities because my team depends on me showing up</label>
+            <label class="choice-option"><input type="radio" name="q1" value="I wait until the morning and decide how I feel"> I wait until the morning and decide how I feel</label>
+            <label class="choice-option"><input type="radio" name="q1" value="I call out if I feel too tired"> I call out if I feel too tired</label>
+          </div>
+          <label for="q2">Tell us about a time you were late, missed work, or missed an important responsibility. What happened and what did you learn?</label>
+          <textarea id="q2" required></textarea>
+
+          <p class="eyebrow">Accountability</p>
+          <label>You make a mistake at work. What's your first reaction?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="q3" value="Communicate it, take responsibility, and learn from it" required> Communicate it, take responsibility, and learn from it</label>
+            <label class="choice-option"><input type="radio" name="q3" value="Try to quietly fix it myself before anyone finds out"> Try to quietly fix it myself before anyone finds out</label>
+            <label class="choice-option"><input type="radio" name="q3" value="Explain why it happened so people know it wasn't my fault"> Explain why it happened so people know it wasn't my fault</label>
+            <label class="choice-option"><input type="radio" name="q3" value="Mention it to a coworker, but not to my dispatcher"> Mention it to a coworker, but not to my dispatcher</label>
+          </div>
+          <label>You accidentally deliver a package to the wrong location because you rushed and didn't double-check. What do you do?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="q4" value="Take responsibility, communicate the issue, and try to correct it" required> Take responsibility, communicate the issue, and try to correct it</label>
+            <label class="choice-option"><input type="radio" name="q4" value="Blame the GPS because technology isn't always accurate"> Blame the GPS because technology isn't always accurate</label>
+            <label class="choice-option"><input type="radio" name="q4" value="Say nothing unless someone asks"> Say nothing unless someone asks</label>
+            <label class="choice-option"><input type="radio" name="q4" value="Move on because one package isn't a big deal"> Move on because one package isn't a big deal</label>
+          </div>
+
+          <p class="eyebrow">Safety mindset</p>
+          <label>You have a difficult route. You still have many stops left, traffic is bad, and you feel behind. What do you do?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="q5" value="Start rushing to catch up" required> Start rushing to catch up</label>
+            <label class="choice-option"><input type="radio" name="q5" value="Stay calm, continue working safely, and communicate if needed"> Stay calm, continue working safely, and communicate if needed</label>
+            <label class="choice-option"><input type="radio" name="q5" value="Get frustrated because the route should have been easier"> Get frustrated because the route should have been easier</label>
+            <label class="choice-option"><input type="radio" name="q5" value="Stop putting in effort because the day is already bad"> Stop putting in effort because the day is already bad</label>
+          </div>
+          <label>You receive feedback about a driving habit that could become unsafe. How do you respond?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="q6" value="Review the feedback, understand it, and make adjustments" required> Review the feedback, understand it, and make adjustments</label>
+            <label class="choice-option"><input type="radio" name="q6" value="Feel frustrated because nobody drives perfectly"> Feel frustrated because nobody drives perfectly</label>
+            <label class="choice-option"><input type="radio" name="q6" value="Think the expectations are too strict"> Think the expectations are too strict</label>
+            <label class="choice-option"><input type="radio" name="q6" value="Continue doing it my way unless something happens"> Continue doing it my way unless something happens</label>
+          </div>
+          <label>Which of these are habits you already practice every time you drive? (select all that apply)</label>
+          <div class="choice-group" id="safety-habits">
+            <label class="choice-option"><input type="checkbox" name="safetyHabits" value="Wear my seatbelt correctly every time"> Wear my seatbelt correctly every time</label>
+            <label class="choice-option"><input type="checkbox" name="safetyHabits" value="Come to a complete stop at stop signs"> Come to a complete stop at stop signs</label>
+            <label class="choice-option"><input type="checkbox" name="safetyHabits" value="Never run red or yellow-turning-red lights"> Never run red or yellow-turning-red lights</label>
+            <label class="choice-option"><input type="checkbox" name="safetyHabits" value="Follow the posted speed limit"> Follow the posted speed limit</label>
+            <label class="choice-option"><input type="checkbox" name="safetyHabits" value="Avoid distractions like phone use while driving"> Avoid distractions like phone use while driving</label>
+            <label class="choice-option"><input type="checkbox" name="safetyHabits" value="Maintain a safe following distance"> Maintain a safe following distance</label>
+          </div>
+
+          <p class="eyebrow">Coachability</p>
+          <label>Your trainer teaches you a different way to organize packages, but you already have your own method. What do you do?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="q8" value="Try their method and see if it helps me improve" required> Try their method and see if it helps me improve</label>
+            <label class="choice-option"><input type="radio" name="q8" value="Listen but continue doing it my way"> Listen but continue doing it my way</label>
+            <label class="choice-option"><input type="radio" name="q8" value="Tell them my way works better"> Tell them my way works better</label>
+            <label class="choice-option"><input type="radio" name="q8" value="Only change if management requires me to"> Only change if management requires me to</label>
+          </div>
+
+          <p class="eyebrow">Customer experience</p>
+          <label>A customer leaves delivery instructions asking for something specific, like placing the package in a certain location or ringing the doorbell. What do you do?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="q10" value="Follow the instructions whenever possible because they're part of the customer experience" required> Follow the instructions whenever possible because they're part of the customer experience</label>
+            <label class="choice-option"><input type="radio" name="q10" value="Follow them only if I have extra time"> Follow them only if I have extra time</label>
+            <label class="choice-option"><input type="radio" name="q10" value="Ignore them because delivering the package is what matters"> Ignore them because delivering the package is what matters</label>
+            <label class="choice-option"><input type="radio" name="q10" value="Only worry about it if someone complains"> Only worry about it if someone complains</label>
+          </div>
+          <label>A customer is upset because their package arrived later than expected, and says something rude when you show up. What do you do?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="q17" value="Stay calm, apologize for the delay, and finish the delivery professionally" required> Stay calm, apologize for the delay, and finish the delivery professionally</label>
+            <label class="choice-option"><input type="radio" name="q17" value="Apologize repeatedly and explain everything that went wrong with the route"> Apologize repeatedly and explain everything that went wrong with the route</label>
+            <label class="choice-option"><input type="radio" name="q17" value="Explain that it's not my fault since I don't control the schedule"> Explain that it's not my fault since I don't control the schedule</label>
+            <label class="choice-option"><input type="radio" name="q17" value="Stay quiet, drop the package, and leave without engaging"> Stay quiet, drop the package, and leave without engaging</label>
+          </div>
+
+          <p class="eyebrow">Handling pressure</p>
+          <label for="q12">Tell us about a day that didn't go as planned, a heavy route, bad weather, running behind, whatever it might be. What happened, and what helped you stay focused and get through it?</label>
+          <textarea id="q12" required></textarea>
+
+          <p class="eyebrow">Independence and integrity</p>
+          <label>Which statement describes you best?</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="q15" value="I like clear expectations and take pride in finishing what I start" required> I like clear expectations and take pride in finishing what I start</label>
+            <label class="choice-option"><input type="radio" name="q15" value="I work better when someone is constantly checking on me"> I work better when someone is constantly checking on me</label>
+            <label class="choice-option"><input type="radio" name="q15" value="I work hard only when there is an extra reward"> I work hard only when there is an extra reward</label>
+            <label class="choice-option"><input type="radio" name="q15" value="I prefer jobs where every day is exactly the same"> I prefer jobs where every day is exactly the same</label>
+          </div>
+
+          <p class="eyebrow">Final question</p>
+          <label for="q16">Delivery drivers work independently most of the day without a manager watching them, and the job includes walking, stairs, changing weather, and adapting when plans change. What motivates you to do the right thing when nobody's watching, why do you believe this position is a good fit for you, and what are you hoping it leads to?</label>
+          <textarea id="q16" required></textarea>
+
+          <div style="display:flex; justify-content:space-between; margin-top:8px;">
+            <button type="button" class="btn btn-ghost" data-back>Back</button>
+            <button type="button" class="btn btn-primary" data-next>Continue</button>
+          </div>
+        </div>
+
+        <!-- Step 5: review -->
+        <div class="form-step" data-step="5">
+          <h3>Review & submit</h3>
+          <p>By submitting, you agree we may contact you by phone, text, or email about this application, and you understand that your schedule is built around the availability you provided, with priority scheduling and extra hours earned through performance.</p>
+          <div id="review-summary" class="mono" style="font-size:0.85rem; color:var(--muted); background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:20px; white-space:pre-wrap;"></div>
+          <div style="display:flex; justify-content:space-between;">
+            <button type="button" class="btn btn-ghost" data-back>Back</button>
+            <button type="submit" class="btn btn-primary" id="submit-btn">Submit Application</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; <span id="year"></span> G92 Logistics LLC.</p>
+    <div class="footer-links"><a href="index.html">About</a><a href="reviews.html">Reviews</a></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/apply.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
