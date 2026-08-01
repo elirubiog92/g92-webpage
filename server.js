@@ -37,7 +37,7 @@ app.use((req, res, next) => {
     const [, password] = Buffer.from(auth.slice(6), 'base64').toString().split(':');
     if (password === process.env.SITE_PASSWORD) return next();
   }
-  res.set('WWW-Authenticate', 'Basic realm="G92 Logistics — Preview"');
+  res.set('WWW-Authenticate', 'Basic realm="G92 Logistics Preview"');
   return res.status(401).send('This site is currently in private preview.');
 });
 
