@@ -24,6 +24,23 @@ function writeDb(name, data) {
 
 // ---------- middleware ----------
 app.use(express.json({ limit: '1mb' }));
+
+// Optional site-wide password gate, for pre-launch review before the public sees it.
+// Set SITE_PASSWORD in your environment to lock EVERY page (including the admin
+// dashboard) behind a browser password prompt. Leave it unset and the site behaves
+// normally. To open the site to the public later, just delete the SITE_PASSWORD
+// environment variable in Render and redeploy/restart — no code changes needed.
+app.use((req, res, next) => {
+  if (!process.env.SITE_PASSWORD) return next();
+  const auth = req.headers.authorization;
+  if (auth && auth.startsWith('Basic ')) {
+    const [, password] = Buffer.from(auth.slice(6), 'base64').toString().split(':');
+    if (password === process.env.SITE_PASSWORD) return next();
+  }
+  res.set('WWW-Authenticate', 'Basic realm="G92 Logistics — Preview"');
+  return res.status(401).send('This site is currently in private preview.');
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: process.env.SESSION_SECRET || 'dev-only-secret-change-me',
